@@ -79,7 +79,7 @@ def _check_member(client, message):
             not client.get_chat_member(chat_id, user_id).status
             in ("administrator", "creator")
             and not user_id in SUDO_USERS
-        );
+        )
             channel = chat_db.channel
             try:
                 client.get_chat_member(channel, user_id)
