@@ -77,9 +77,9 @@ def _check_member(client, message):
         user_id = message.from_user.id
         if (
             not client.get_chat_member(chat_id, user_id).status
-            if ("administrator", "creator")
+            in ("administrator", "creator")
             and not user_id in SUDO_USERS
-        ):
+        
             channel = chat_db.channel
             try:
                 client.get_chat_member(channel, user_id)
