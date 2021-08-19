@@ -74,29 +74,30 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-`Heya` 🤗 `I am` **Victoria** `your group super bot`
-`I am very fast and  more efficient  I provide awesome  features which a owner will look for  filter ,warn system,note keeping system flood!`
+Hello [🥰](https://telegra.ph/file/2bc788c56eee3babfd073.jpg), My Name Is **Victoria** I am a Best Group Managing Bot With Advanced Features. 
+
+I Can Help You In Managing Your Group And Protect From Spammers and Scammers.
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="❔Hᴇʟᴘ & Cᴏᴍᴍᴀɴᴅꜱ ❔", callback_data="help_back"),
+            text="Hᴇʟᴘ & Cᴏᴍᴍᴀɴᴅꜱ", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="👥 Gʀᴏᴜᴘ", url=f"https://t.me/SiderzChat"),
+        InlineKeyboardButton(text="👥 Gʀᴏᴜᴘ", url=f"https://t.me/FREE_MODS_APP_CHAT"),
         InlineKeyboardButton(
-            text="Cʜᴀɴɴᴇʟ 🔔", url=f"https://t.me/SiderzBot"
+            text="Cʜᴀɴɴᴇʟ 🔔", url=f"https://t.me/FREE_MODS_APP"
         ),
     ],
     [
         InlineKeyboardButton(text="📜 Iɴꜰᴏʀᴍᴀᴛɪᴏɴ", callback_data="Victoria_"),
         InlineKeyboardButton(
-            text="Bᴏᴛ Lɪꜱᴛ 🤖", url=f"https://t.me/SiderzBot/9"
+            text="Our Bots", url=f"https://t.me/FMA_Bots"
         ),
     ],
     [
-        InlineKeyboardButton(text="💕 Sᴜᴍᴍᴏɴ Mᴇ 💕", url="http://t.me/Victoriabot?startgroup=true"),
+        InlineKeyboardButton(text="Add To Group", url="http://t.me/MissVictoria_bot?startgroup=true"),
     ],
 ]
 
@@ -107,8 +108,9 @@ HELP_STRINGS = """
 
 
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
- @SiderzDonate's 💕"""
+DONATE_STRING = """Wow Thats Great You Want To Donate Us
+
+But No Thanks We need Just A 1 Month Vps ,PLease Help Us With That In Our Support Group."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -218,7 +220,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            "👋 I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+            "👋 Hello I Am Alive \n<b>Working since:</b> <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
