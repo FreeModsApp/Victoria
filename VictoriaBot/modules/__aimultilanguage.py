@@ -11,10 +11,10 @@ import aiohttp
 from google_trans_new import google_translator
 from pyrogram import filters
 
-from VictoriaBot import BOT_ID
-from VictoriaBot.helper_extra.aichat import add_chat, get_session, remove_chat
-from VictoriaBot.pyrogramee.pluginshelper import admins_only, edit_or_reply
-from VictoriaBot import pbot as Victoria
+from Victoriabot import BOT_ID
+from Victoriabot.helper_extra.aichat import add_chat, get_session, remove_chat
+from Victoriabot.pyrogramee.pluginshelper import admins_only, edit_or_reply
+from VictoriaRobot import pbot as layla
 
 translator = google_translator()
 import requests
@@ -39,15 +39,15 @@ async def fetch(url):
         return
 
 
-Victoria_chats = []
+layla_chats = []
 en_chats = []
 
-@Victoria.on_message(
+@layla.on_message(
     filters.command("chatbot") & ~filters.edited & ~filters.bot & ~filters.private
 )
 @admins_only
 async def hmm(_, message):
-    global Victoria_chats
+    global layla_chats
     if len(message.command) != 2:
         await message.reply_text(
             "I only recognize `/chatbot on` and /chatbot `off only`"
@@ -62,7 +62,7 @@ async def hmm(_, message):
             await lel.edit("Victoria AI Already Activated In This Chat")
             return
         await lel.edit(
-            f"Victoria AI Successfully Added For Users In The Chat {message.chat.id}"
+            f"layla AI Successfully Added For Users In The Chat {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
@@ -72,7 +72,7 @@ async def hmm(_, message):
             await lel.edit("Victoria AI Was Not Activated In This Chat")
             return
         await lel.edit(
-            f"Victoria AI Successfully Deactivated For Users In The Chat {message.chat.id}"
+            f"Victoria Successfully Deactivated For Users In The Chat {message.chat.id}"
         )
 
     elif status == "EN" or status == "en" or status == "english":
@@ -88,7 +88,7 @@ async def hmm(_, message):
         )
 
 
-@Victoria.on_message(
+@layla.on_message(
     filters.text
     & filters.reply
     & ~filters.bot
@@ -116,7 +116,7 @@ async def hmm(client, message):
         test = msg
         test = test.replace("Victoria", "Aco")
         test = test.replace("Victoria", "Aco")
-        URL = "https://api.affiliateplus.xyz/api/chatbot?message=hi&botname=@VictoriaBot&ownername=@useIes"
+        URL = "https://api.affiliateplus.xyz/api/chatbot?message=hi&botname=@MissVictoria_bot&ownername=@AK_ERROR_404"
 
         try:
             r = requests.request("GET", url=URL)
@@ -130,7 +130,7 @@ async def hmm(client, message):
 
         pro = result["message"]
         try:
-            await Victoria.send_chat_action(message.chat.id, "typing")
+            await layla.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError:
             return
@@ -179,7 +179,7 @@ async def hmm(client, message):
         # Kang with the credits bitches @InukaASiTH
         test = test.replace("Victoria", "Aco")
         test = test.replace("Victoria", "Aco")
-        URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@VictoriaBot&ownername=@useIes"
+        URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@MissVictoria_bot&ownername=@Ak_Error_404"
         try:
             r = requests.request("GET", url=URL)
         except:
@@ -196,13 +196,13 @@ async def hmm(client, message):
             except:
                 return
         try:
-            await Victoria.send_chat_action(message.chat.id, "typing")
+            await layla.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError:
             return
 
 
-@Victoria.on_message(
+@layla.on_message(
     filters.text & filters.private & ~filters.edited & filters.reply & ~filters.bot
 )
 async def inuka(client, message):
@@ -253,7 +253,7 @@ async def inuka(client, message):
     # Kang with the credits bitches @InukaASiTH
     test = test.replace("Victoria", "Aco")
     test = test.replace("Victoria", "Aco")
-    URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@VictoriaBot&ownername=@useIes"
+    URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@MissVictoria_bot&ownername=@AK_ERROR_404"
     try:
         r = requests.request("GET", url=URL)
     except:
@@ -268,13 +268,13 @@ async def inuka(client, message):
     if not "en" in lan and not lan == "":
         pro = translator.translate(pro, lang_tgt=lan[0])
     try:
-        await Victoria.send_chat_action(message.chat.id, "typing")
+        await layla.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError:
         return
 
 
-@Victoria.on_message(
+@layla.on_message(
     filters.regex("Victoria|Victoria|Victoria|Victoria|Victoria")
     & ~filters.bot
     & ~filters.via_bot
@@ -331,7 +331,7 @@ async def inuka(client, message):
     # Kang with the credits bitches @InukaASiTH
     test = test.replace("Victoria", "Aco")
     test = test.replace("Victoria", "Aco")
-    URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@VictoriaBot&ownername=@useIes"
+    URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@MissVictoria_Bot&ownername=@ak_error_404"
     try:
         r = requests.request("GET", url=URL)
     except:
@@ -348,7 +348,7 @@ async def inuka(client, message):
         except Exception:
             return
     try:
-        await Victoria.send_chat_action(message.chat.id, "typing")
+        await layla.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError:
         return
@@ -356,7 +356,7 @@ async def inuka(client, message):
 
 __help__ = """
 <b> Chatbot </b>
-Victoria AI 3.0 IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
+Victoria  IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
  - /chatbot [ON/OFF]: Enables and disables AI Chat mode (EXCLUSIVE)
  - /chatbot EN : Enables English only chatbot
  
