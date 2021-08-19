@@ -85,15 +85,15 @@ buttons = [
             text="Hᴇʟᴘ & Cᴏᴍᴍᴀɴᴅꜱ", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="👥 Gʀᴏᴜᴘ", url=f"https://t.me/FREE_MODS_APP_CHAT"),
+        InlineKeyboardButton(text="Support Group", url=f"https://t.me/FREE_MODS_APP_CHAT"),
         InlineKeyboardButton(
-            text="Cʜᴀɴɴᴇʟ 🔔", url=f"https://t.me/FREE_MODS_APP"
+            text="Main-Channel", url=f"https://t.me/FREE_MODS_APP"
         ),
     ],
     [
-        InlineKeyboardButton(text="📜 Iɴꜰᴏʀᴍᴀᴛɪᴏɴ", callback_data="Victoria_"),
+        InlineKeyboardButton(text="About Me", callback_data="Victoria_"),
         InlineKeyboardButton(
-            text="Our Bots", url=f"https://t.me/FMA_Bots"
+            text="Bots Channel", url=f"https://t.me/FMA_Bots"
         ),
     ],
     [
@@ -390,8 +390,8 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..😻 I'm *Victoria*
-                 \nHere is the [🔥Source Code🔥](https://github.com/DarkCybers/VictoriaBot) .""",
+            text=""" Hi..I am *Victoria* My Source Is Pvt
+           .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -638,7 +638,7 @@ def donate(update: Update, context: CallbackContext):
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 1947924017 and DONATION_LINK:
+        if OWNER_ID != 1257645196 and DONATION_LINK:
             update.effective_message.reply_text(
                 "You can also donate to the person currently running me "
                 "[here]({})".format(DONATION_LINK),
@@ -686,7 +686,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "`Yes I'm Fine` 😹")
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "My Systems Started Working👨‍💻")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
