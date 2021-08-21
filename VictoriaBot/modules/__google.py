@@ -263,9 +263,9 @@ async def apk(e):
             "five", "5"
         )
         app_details += (
-            "\n<code>Features :</code> <a href='"
+            "\n<code>Features :</code> <b><a href='"
             + app_link
-            + "'>View in Play Store</a>"
+            + "'>View in Play Store</a></b>"
         )
         app_details += "\n\n<b>===> @MissVictoria_Bot <===</b>"
         await e.reply(app_details, link_preview=True, parse_mode="HTML")
