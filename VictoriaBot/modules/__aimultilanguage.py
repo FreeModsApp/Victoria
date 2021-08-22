@@ -18,7 +18,7 @@ import re
 
 import emoji
 
-url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
+url = "http://api.brainshop.ai/get?bid=157759&key=bs3wV6VXoWdr7nwX&uid=[uid]&msg=[msg]"
 import re
 
 import aiohttp
