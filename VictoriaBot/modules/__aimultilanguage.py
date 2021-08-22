@@ -1,23 +1,43 @@
+# Copyright (C) 2021 Red-Aura & TeamDaisyX & HamkerCat
+
+# This file is part of Daisy (Telegram Bot)
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import re
 
 import emoji
 
-IBM_WATSON_CRED_URL = "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/bd6b59ba-3134-4dd4-aff2-49a79641ea15"
-IBM_WATSON_CRED_PASSWORD = "UQ1MtTzZhEsMGK094klnfa-7y_4MCpJY1yhd52MXOo3Y"
 url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 import re
 
 import aiohttp
-from google_trans_new import google_translator
+
+# from google_trans_new import google_translator
+from googletrans import Translator as google_translator
 from pyrogram import filters
 
 from VictoriaBot import BOT_ID
 from VictoriaBot.helper_extra.aichat import add_chat, get_session, remove_chat
 from VictoriaBot.pyrogramee.pluginshelper import admins_only, edit_or_reply
-from VictoriaBot import pbot as Victoria
+from VictoriaBot import pbot as daisyx
 
 translator = google_translator()
-import requests
+
+
+async def lunaQuery(query: str, user_id: int):
+    luna = await arq.luna(query, user_id)
+    return luna.result
 
 
 def extract_emojis(s):
@@ -39,15 +59,17 @@ async def fetch(url):
         return
 
 
-Victoria_chats = []
+daisy_chats = []
 en_chats = []
+# AI Chat (C) 2020-2021 by @InukaAsith
 
-@Victoria.on_message(
+
+@daisyx.on_message(
     filters.command("chatbot") & ~filters.edited & ~filters.bot & ~filters.private
 )
 @admins_only
 async def hmm(_, message):
-    global Victoria_chats
+    global daisy_chats
     if len(message.command) != 2:
         await message.reply_text(
             "I only recognize `/chatbot on` and /chatbot `off only`"
@@ -59,20 +81,20 @@ async def hmm(_, message):
         lel = await edit_or_reply(message, "`Processing...`")
         lol = add_chat(int(message.chat.id))
         if not lol:
-            await lel.edit("Victoria AI Already Activated In This Chat")
+            await lel.edit("Daisy AI Already Activated In This Chat")
             return
         await lel.edit(
-            f"Victoria AI Successfully Added For Users In The Chat {message.chat.id}"
+            f"Daisy AI Successfully Added For Users In The Chat {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
         lel = await edit_or_reply(message, "`Processing...`")
         Escobar = remove_chat(int(message.chat.id))
         if not Escobar:
-            await lel.edit("Victoria AI Was Not Activated In This Chat")
+            await lel.edit("Daisy AI Was Not Activated In This Chat")
             return
         await lel.edit(
-            f"Victoria AI Successfully Deactivated For Users In The Chat {message.chat.id}"
+            f"Daisy AI Successfully Deactivated For Users In The Chat {message.chat.id}"
         )
 
     elif status == "EN" or status == "en" or status == "english":
@@ -88,7 +110,7 @@ async def hmm(_, message):
         )
 
 
-@Victoria.on_message(
+@daisyx.on_message(
     filters.text
     & filters.reply
     & ~filters.bot
@@ -114,23 +136,17 @@ async def hmm(client, message):
         message.continue_propagation()
     if chat_id in en_chats:
         test = msg
-        test = test.replace("Victoria", "Aco")
-        test = test.replace("Victoria", "Aco")
-        URL = "https://api.affiliateplus.xyz/api/chatbot?message=hi&botname=@VictoriaBot&ownername=@useIes"
+        test = test.replace("daisy", "Aco")
+        test = test.replace("Daisy", "Aco")
+        response = await lunaQuery(
+            test, message.from_user.id if message.from_user else 0
+        )
+        response = response.replace("Aco", "Daisy")
+        response = response.replace("aco", "Daisy")
 
+        pro = response
         try:
-            r = requests.request("GET", url=URL)
-        except:
-            return
-
-        try:
-            result = r.json()
-        except:
-            return
-
-        pro = result["message"]
-        try:
-            await Victoria.send_chat_action(message.chat.id, "typing")
+            await daisyx.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError:
             return
@@ -166,43 +182,42 @@ async def hmm(client, message):
             # print (rm)
         try:
             lan = translator.detect(rm)
+            lan = lan.lang
         except:
             return
         test = rm
         if not "en" in lan and not lan == "":
             try:
-                test = translator.translate(test, lang_tgt="en")
+                test = translator.translate(test, dest="en")
+                test = test.text
             except:
                 return
         # test = emoji.demojize(test.strip())
 
-        # Kang with the credits bitches @InukaASiTH
-        test = test.replace("Victoria", "Aco")
-        test = test.replace("Victoria", "Aco")
-        URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@VictoriaBot&ownername=@useIes"
-        try:
-            r = requests.request("GET", url=URL)
-        except:
-            return
-
-        try:
-            result = r.json()
-        except:
-            return
-        pro = result["message"]
+        test = test.replace("daisy", "Aco")
+        test = test.replace("Daisy", "Aco")
+        response = await lunaQuery(
+            test, message.from_user.id if message.from_user else 0
+        )
+        response = response.replace("Aco", "Daisy")
+        response = response.replace("aco", "Daisy")
+        response = response.replace("Luna", "Daisy")
+        response = response.replace("luna", "Daisy")
+        pro = response
         if not "en" in lan and not lan == "":
             try:
-                pro = translator.translate(pro, lang_tgt=lan[0])
+                pro = translator.translate(pro, dest=lan)
+                pro = pro.text
             except:
                 return
         try:
-            await Victoria.send_chat_action(message.chat.id, "typing")
+            await daisyx.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError:
             return
 
 
-@Victoria.on_message(
+@daisyx.on_message(
     filters.text & filters.private & ~filters.edited & filters.reply & ~filters.bot
 )
 async def inuka(client, message):
@@ -239,43 +254,40 @@ async def inuka(client, message):
         # print (rm)
     try:
         lan = translator.detect(rm)
+        lan = lan.lang
     except:
         return
     test = rm
     if not "en" in lan and not lan == "":
         try:
-            test = translator.translate(test, lang_tgt="en")
+            test = translator.translate(test, dest="en")
+            test = test.text
         except:
             return
 
     # test = emoji.demojize(test.strip())
 
     # Kang with the credits bitches @InukaASiTH
-    test = test.replace("Victoria", "Aco")
-    test = test.replace("Victoria", "Aco")
-    URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@VictoriaBot&ownername=@useIes"
-    try:
-        r = requests.request("GET", url=URL)
-    except:
-        return
+    test = test.replace("daisy", "Aco")
+    test = test.replace("Daisy", "Aco")
 
-    try:
-        result = r.json()
-    except:
-        return
+    response = await lunaQuery(test, message.from_user.id if message.from_user else 0)
+    response = response.replace("Aco", "Daisy")
+    response = response.replace("aco", "Daisy")
 
-    pro = result["message"]
+    pro = response
     if not "en" in lan and not lan == "":
-        pro = translator.translate(pro, lang_tgt=lan[0])
+        pro = translator.translate(pro, dest=lan)
+        pro = pro.text
     try:
-        await Victoria.send_chat_action(message.chat.id, "typing")
+        await daisyx.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError:
         return
 
 
-@Victoria.on_message(
-    filters.regex("Victoria|Victoria|Victoria|Victoria|Victoria")
+@daisyx.on_message(
+    filters.regex("Daisy|daisy|DaisyX|daisyx|Daisyx")
     & ~filters.bot
     & ~filters.via_bot
     & ~filters.forwarded
@@ -317,38 +329,34 @@ async def inuka(client, message):
         # print (rm)
     try:
         lan = translator.detect(rm)
+        lan = lan.lang
     except:
         return
     test = rm
     if not "en" in lan and not lan == "":
         try:
-            test = translator.translate(test, lang_tgt="en")
+            test = translator.translate(test, dest="en")
+            test = test.text
         except:
             return
 
     # test = emoji.demojize(test.strip())
 
-    # Kang with the credits bitches @InukaASiTH
-    test = test.replace("Victoria", "Aco")
-    test = test.replace("Victoria", "Aco")
-    URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@MissVictoria_Bot&ownername=@useIes"
-    try:
-        r = requests.request("GET", url=URL)
-    except:
-        return
+    test = test.replace("daisy", "Aco")
+    test = test.replace("Daisy", "Aco")
+    response = await lunaQuery(test, message.from_user.id if message.from_user else 0)
+    response = response.replace("Aco", "Daisy")
+    response = response.replace("aco", "Daisy")
 
-    try:
-        result = r.json()
-    except:
-        return
-    pro = result["message"]
+    pro = response
     if not "en" in lan and not lan == "":
         try:
-            pro = translator.translate(pro, lang_tgt=lan[0])
+            pro = translator.translate(pro, dest=lan)
+            pro = pro.text
         except Exception:
             return
     try:
-        await Victoria.send_chat_action(message.chat.id, "typing")
+        await daisyx.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError:
         return
@@ -356,10 +364,16 @@ async def inuka(client, message):
 
 __help__ = """
 <b> Chatbot </b>
-Victoria AI IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
+DAISY AI 3.0 IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
+
  - /chatbot [ON/OFF]: Enables and disables AI Chat mode (EXCLUSIVE)
  - /chatbot EN : Enables English only chatbot
  
+ 
+<b> Assistant </b>
+ - /ask [question]: Ask question from daisy
+ - /ask [reply to voice note]: Get voice reply
+ 
 """
 
-__mod_name__ = "Chatbot"
+__mod_name__ = "AI Assistant"
