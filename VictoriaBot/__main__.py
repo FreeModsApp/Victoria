@@ -355,16 +355,13 @@ def Victoria_about_callback(update, context):
     query = update.callback_query
     if query.data == "Victoria_":
         query.message.edit_text(
-            text=""" **Victoria** it's online since 29 March 2021 and it's constantly updated!
-            \n**Bot Admins**
-            
-            \n• @useIes, bot creator and main developer.
-            \n• The Doctor, server manager and developer.
-            \n• Manuel 5, developer.
-            \n**Support**
-            \n• [Click here](t.me/BotDevlopers) to consult the updated list of Official Supporters of the bot.
-            \n• Thanks to all our **donors** for supporting server and development expenses and all those who have reported bugs or suggested new features.
-            \n• We also thank **all the groups** who rely on our Bot for this service, we hope you will always like it: we are constantly working to improve it!""",
+            text=""" **Victoria** is a Newly Launched Bot with Advanced Modules
+                      /n **Features Of Victoria⚡**
+              /n ~> Best Group Manager Bot 💝
+                /n ~> Hq Music Bot 
+             /n ~> Soon Coming AI Chat Bot
+             /n ~> Soon Coming Video ChatBot
+          """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
