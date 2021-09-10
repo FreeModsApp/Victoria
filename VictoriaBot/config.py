@@ -4,7 +4,7 @@ import os
 
 
 def get_user_list(config, key):
-    with open("{}/LaylaRobot/{}".format(os.getcwd(), config), "r") as json_file:
+    with open("{}/Victoriabot/{}".format(os.getcwd(), config), "r") as json_file:
         return json.load(json_file)[key]
 
  
@@ -34,7 +34,7 @@ class Config(object):
     WEBHOOK = False
     INFOPIC = True
     URL = None
-    sw_api= "lQOndSdwVTapPWmukIcjIQ47PtpIbNs5mPHy2tEPUXldTnIEtN60JFB2DELoUuNW"  # go to support.spamwat.ch to get key
+    SPAMWATCH_API= "lQOndSdwVTapPWmukIcjIQ47PtpIbNs5mPHy2tEPUXldTnIEtN60JFB2DELoUuNW"  # go to support.spamwat.ch to get key
     SPAMWATCH_SUPPORT_CHAT = "SpamWatchSupport"
 
     # OPTIONAL
