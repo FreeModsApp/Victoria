@@ -355,12 +355,8 @@ def Victoria_about_callback(update, context):
     query = update.callback_query
     if query.data == "Victoria_":
         query.message.edit_text(
-            text=""" **Victoria** is a Newly Launched Bot with Advanced Modules
-                      /n **Features Of Victoria⚡**
-              /n ~> Best Group Manager Bot 💝
-                /n ~> Hq Music Bot 
-             /n ~> Soon Coming AI Chat Bot
-             /n ~> Soon Coming Video ChatBot
+            text=""" **Victoria** is a Newly Launched Bot with Advanced Modules\n\n**Features Of Victoria⚡**\n ~> Best Group Manager Bot ❤️\n ~> Hq Music Bot .\n ~> Soon Coming AI Chat Bot. \n ~> Soon Coming Video ChatBot.\n\n **Developers & Support Channel!** \n °Owner & Dev -> @Akcrazytech \n °2nd Dev -> @TheCyberDemon\n •Support Channel ~> @Free_Mods_App\n •Support Group ~> @Free_Mods_App_Chat\n\n __Thank You for Using Our Bot!__ 🥰
+
           """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
